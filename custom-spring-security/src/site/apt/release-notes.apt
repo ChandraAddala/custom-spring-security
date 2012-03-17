@@ -2,6 +2,6 @@ Release notes
 
 
 
-	git tag(1_0_0):
+	git tag(V1.0.0):
 		
 		Spring security web application using form based authentication. This is the base of the application to start with.
