@@ -7,7 +7,15 @@
     <global-method-security secured-annotations="enabled" />
  
     <http auto-config="true">
+        <intercept-url pattern="/" access="ROLE_ANONYMOUS" />
+        <intercept-url pattern="/login" access="ROLE_ANONYMOUS" />
+    
 		<intercept-url pattern="/welcome" access="ROLE_USER" />
+		<intercept-url pattern="/**"  access="ROLE_USER"  />
+		
+		<form-login login-page='/login?error=1' default-target-url='/welcome' />
+		<logout invalidate-session="true" logout-success-url="/login" />
+		
 	</http>
 
 	<authentication-manager>

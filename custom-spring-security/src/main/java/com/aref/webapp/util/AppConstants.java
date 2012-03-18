@@ -10,6 +10,7 @@ package com.aref.webapp.util;
 public interface AppConstants {
 
 	public static final String MESSAGE 			= "message";
-	public static final String ERRORMESSAGE 	= "errormessage";	
+	public static final String ERRORMESSAGE 	= "errormessage";
+	public static final String ERROR 			= "error";
 	
 }

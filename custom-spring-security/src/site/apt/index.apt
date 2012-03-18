@@ -2,4 +2,4 @@ custom-spring-security
 
 	This project uses spring security for form based authentication. It contains sample code for customizing spring security for some specific functionalities like invoking a service for authentication after user submits the form, adding another variable other than username and password in the login form etc.
 	
-	The web application can be accessed with http://\<hostname\>:\<port\>/\<appcontext\>/welcome. This is a secured page and would need user to login before he can see this page.
+	The web application can be accessed with http://\<hostname\>:\<port\>/\<appcontext\>/welcome. This is a secured page and would need user to login before he can see this page. You can use guest/guest to login.

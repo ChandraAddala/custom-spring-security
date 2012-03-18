@@ -1,6 +1,8 @@
 Release notes
 
-
+	git tag(V1.0.1):
+		
+		Added custom login and logout views
 
 	git tag(V1.0.0):
 		
