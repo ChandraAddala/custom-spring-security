@@ -6,25 +6,46 @@
  
     <global-method-security secured-annotations="enabled" />
  
-    <http auto-config="true">
+    <http auto-config="false" entry-point-ref="loginUrlAuthenticationEntryPoint">
         <intercept-url pattern="/" access="ROLE_ANONYMOUS" />
         <intercept-url pattern="/login" access="ROLE_ANONYMOUS" />
     
 		<intercept-url pattern="/welcome" access="ROLE_USER" />
 		<intercept-url pattern="/**"  access="ROLE_USER"  />
 		
-		<form-login login-page='/login?error=1' default-target-url='/welcome' />
+		<custom-filter position="FORM_LOGIN_FILTER" ref="authenticationFilter" />
 		<logout invalidate-session="true" logout-success-url="/login" />
 		
 	</http>
 
-	<authentication-manager>
-		<authentication-provider>
-			<user-service>
-				<user name="guest" password="guest" authorities="ROLE_USER" />
-			</user-service>
-		</authentication-provider>
-	</authentication-manager>
- 
+	<beans:bean id="authenticationFilter" 
+                class="com.aref.webapp.security.CustomAuthenticationFilter">
+        <beans:property name="authenticationManager" ref="customAuthenticationManager" />
+		<beans:property name="authenticationFailureHandler" ref="failureHandler" />
+		<beans:property name="authenticationSuccessHandler" ref="successHandler" />
+    </beans:bean>
 
+    <beans:bean id="customAuthenticationManager" 
+                class="com.aref.webapp.security.CustomAuthenticationManager" />
+
+    <beans:bean id="failureHandler" 
+                class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+        <beans:property name="defaultFailureUrl" value="/login?error=1" />
+    </beans:bean>
+ 
+	<beans:bean id="successHandler" 
+	            class="org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler">
+	    <beans:property name="defaultTargetUrl" value="/welcome" />
+	</beans:bean> 
+
+    <beans:bean id="loginUrlAuthenticationEntryPoint" 
+                class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+        <beans:property name="loginFormUrl" value="/login?error=1" />
+    </beans:bean>
+    
+    <!-- The tag below has no use but Spring Security needs it to autowire the parent property of 
+        org.springframework.security.authentication.ProviderManager. Otherwise we get an error 
+        A probable bug. This is still under investigation-->
+    <authentication-manager />
+    
  </beans:beans>

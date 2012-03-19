@@ -27,6 +27,7 @@
         <param-value>
             /WEB-INF/WebAppCtxt-spring.xml
             /WEB-INF/SecurityAppCtxt-spring.xml
+            /WEB-INF/ServiceAppCtxt-spring.xml
         </param-value>
     </context-param>
     

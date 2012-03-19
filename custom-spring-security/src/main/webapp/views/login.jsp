@@ -18,6 +18,12 @@
 	        <label for="j_username" style="margin:5px 5px 5px 40px;">Username</label><input type="text" name="j_username" id="j_username" style="margin:5px;" /><br>
 	        <label for="j_password" style="margin:5px 5px 5px 41px;">Password</label><input type="password" name="j_password" id="j_password" style="margin:5px;"/><br>
 	        
+	        <label for="j_username" style="margin:5px 5px 5px 40px;">Company</label>
+	        <select name="company">
+	        	<option value="-1">None</option>
+	        	<option value="Marketing">Marketing</option>
+	        	<option value="Sales">Sales</option>
+	        </select>
 	        <div style="width:140px;margin-left:auto;margin-right:auto;padding:10px;">
 		        <!--Primary button-->
 		        <a class="SubmitButton" id="login" href="#" onclick="javascript:document.loginForm.submit();"><span>Login</span></a>

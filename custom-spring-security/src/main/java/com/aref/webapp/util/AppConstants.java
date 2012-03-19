@@ -13,4 +13,5 @@ public interface AppConstants {
 	public static final String ERRORMESSAGE 	= "errormessage";
 	public static final String ERROR 			= "error";
 	
+	public static final String USER 			= "user";
 }
