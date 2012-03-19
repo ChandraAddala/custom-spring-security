@@ -3,7 +3,7 @@ Release notes
 	get tag(V1.0.2)
 	
 		Calling external Service to authenticate. This involves writing your own custom authentication filter. 
-		Also adding custom parameter other than username/password.
+		Also adding custom parameter other than username/password. 
 
 	git tag(V1.0.1):
 		
