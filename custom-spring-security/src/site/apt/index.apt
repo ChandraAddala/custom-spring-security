@@ -8,5 +8,8 @@ custom-spring-security
 		 
 		[[3]] custom parameter on the login page other than username/password.
 		
+		[[4]] custom defaultTargetUrl. After logging conditionally change the defaultTargetUrl. Typical application of this change is, when the user password expires, instead of redirecting to the welcome page after login, we may have to force him to the change password screen.
 	
-	The web application can be accessed with http://\<hostname\>:\<port\>/\<appcontext\>/welcome. This is a secured page and would need user to login before he can see this page. You can use guest/guest to login.
+	The web application can be accessed with http://\<hostname\>:\<port\>/\<appcontext\>/welcome. 
+	This is a secured page and would need user to login before he can see this page. You can use guest/guest to login. 
+	For testing point number 4, with an expired password you can use expired/expired as login credentials.

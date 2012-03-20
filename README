@@ -3,3 +3,4 @@ This project uses spring security for form based authentication. It contains sam
 1) custom login and logout views.
 2) custom authentication filter for form based authentication. 
 3) custom parameter on the login page other than username/password.
+4) custom defaultTargetUrl. After logging conditionally change the defaultTargetUrl. Typical application of this change is, when the user password expires, instead of redirecting to the welcome page after login, we may have to force him to the change password screen.

@@ -1,5 +1,12 @@
 Release notes
 
+	get tag(V1.0.3)
+	
+		Adding custom defaultTargetUrl. After logging conditionally change the defaultTargetUrl. 
+		Typical application of this change is, when the user password expires, instead of redirecting to the welcome page
+		after login, we may have to force him to the change password screen.
+
+
 	get tag(V1.0.2)
 	
 		Calling external Service to authenticate. This involves writing your own custom authentication filter. 

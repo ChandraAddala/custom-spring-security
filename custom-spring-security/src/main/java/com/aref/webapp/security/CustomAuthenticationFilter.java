@@ -1,6 +1,7 @@
 package com.aref.webapp.security;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -88,7 +89,16 @@ public class CustomAuthenticationFilter extends AbstractAuthenticationProcessing
 		//calling authentication manager
 		CustomAuthenticationToken authentication = (CustomAuthenticationToken) super.getAuthenticationManager().authenticate(authRequest);
 		
-		session.setAttribute(AppConstants.USER, (User) authentication.getPrincipal());
+		User user = (User) authentication.getPrincipal();
+		session.setAttribute(AppConstants.USER, user);
+		
+		//if password expired
+		if (!(new Date(System.currentTimeMillis()).before(user.getPasswordExpiryDate()))) {
+			
+			//changing the defaultTargetUrl to force user to change password.
+			request.setAttribute(CustomSimpleUrlAuthenticationSuccessHandler.DEFAULT_TARGET_ATTRIBUTE, "/changePassword");			
+		}
+
 		
 		return authentication;
 	}

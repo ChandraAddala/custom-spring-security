@@ -21,12 +21,15 @@ public final class User {
 	private final Date dateOfBirth;
 	
 	private final String emailAddress;
+	
+	private final Date passwordExpiryDate;
 
 	public User(String userName, 
 				String firstName, 
 				String lastName,
 				Date dateOfBirth, 
-				String emailAddress) {
+				String emailAddress,
+				Date passwordExpiryDate) {
 		
 		super();
 		this.userName = userName;
@@ -41,6 +44,13 @@ public final class User {
 		}
 
 		this.emailAddress = emailAddress;
+		
+		//making defensive copy
+		if (passwordExpiryDate != null) {
+			this.passwordExpiryDate = new Date(passwordExpiryDate.getTime());			
+		} else {
+			this.passwordExpiryDate = null;
+		}
 	}
 
 	public String getUserName() {
@@ -57,13 +67,23 @@ public final class User {
 
 	
 	public Date getDateOfBirth() {
-		return new Date(dateOfBirth.getTime());
+		if (dateOfBirth != null) {
+			return new Date(dateOfBirth.getTime());
+		}
+		return dateOfBirth;
 	}
 
 	public String getEmailAddress() {
 		return emailAddress;
 	}
 	
+	public Date getPasswordExpiryDate() {
+		if (passwordExpiryDate != null) {
+			return new Date(passwordExpiryDate.getTime());
+		}
+		return passwordExpiryDate;
+	}
+
 	@Override
 	public String toString() {
 		
@@ -83,6 +103,9 @@ public final class User {
 		
 		sb.append(" emailAddress=");
 		sb.append(emailAddress);
+
+		sb.append(" passwordExpiryDate=");
+		sb.append(passwordExpiryDate);
 
 		return sb.toString();
 	}

@@ -15,7 +15,7 @@ import com.aref.webapp.util.AppConstants;
 public class LoginController {
 
 	@RequestMapping(value={"/","/login"}, method=RequestMethod.GET)
-	public String printWelcome(ModelMap model,
+	public String login(ModelMap model,
 							   HttpSession session,
 							   @RequestParam(value="error",required=false) String error) {
  
